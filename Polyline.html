@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Polyline Leaflet Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    <script>
+        var map = L.map('map').setView([9.094194, 99.356624], 18);
+        mapLink =
+            '<a href="http://map.google.com">GoogleSatelliteMap</a>';
+        L.tileLayer(
+            'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            attribution: 'Map data &copy; ' + mapLink,
+            maxZoom: 20,
+        }).addTo(map);
+        var latlngs = [
+            [9.093425, 99.357165],
+            [9.0939411, 99.356608],
+            [9.094348, 99.356991],
+            [9.093856, 99.357614]
+        ];
+        var polyline = L.polyline(latlngs,
+            {
+                color: 'red',
+                weight: 10,
+                opacity: .7,
+                dashArray: '20, 15',
+                lineJoin: 'round'
+            }).addTo(map);
+        var scale = L.control.scale({
+            'imperial': false
+        });
+        scale.addTo(map);
+    </script>
+</body>
+
+</html> 
