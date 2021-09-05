@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <title>Multiple Marker Leaflet Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 800px; height: 600px"></div>
+    <script>
+        var planes = [
+            ["คณะวิทยาศาสตร์และเทคโนโลยีอุตสาหกรรม", 9.095639, 99.358001],
+            ["สำนักงานอธิการบดี", 9.091237, 99.354229],
+            ["คณะศิลปศาสตร์และวิทยาการจัดการ", 9.094201, 99.356725],
+            ["หอประชุม", 9.091882, 99.354704],
+            ["อาคารศูนย์การเรียนรู้", 9.093211, 99.355875],
+            ["โรงเรียน มอ วิทยานุสรณ์", 9.089585, 99.354964],
+            ["สระว่ายน้ำ", 9.096485, 99.359028],
+            ["สนามกีฬา", 9.094333, 99.359049],
+            ["7-11", 9.095290, 99.359150]
+        ];
+        var map = L.map('map').setView([9.094194, 99.356624], 16);
+        mapLink =
+            '<a href="http://map.google.com">GoogleSatelliteMap</a>';
+        L.tileLayer(
+            'https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        for (var i = 0; i < planes.length; i++) {
+
+            marker = new L.marker([planes[i][1], planes[i][2]])
+                .bindPopup(planes[i][0])
+                .addTo(map);
+        }
+    </script>
+</body>
+
+</html>

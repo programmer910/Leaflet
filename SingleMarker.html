@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <title>Marker Leaflet Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+    <script>
+        var map = L.map('map').setView([9.094194, 99.356624], 16);
+        mapLink = '<a href="http://map.google.com">Google</a>';
+        L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            attribution: '&copy; ' + mapLink + ' Contributors',
+            maxZoom: 18,
+        }).addTo(map);
+        var marker = L.marker([9.095639, 99.358001],
+            {
+                draggable: true,        // Make the icon dragable
+                title: 'ตึกวิทย์',         // Add a title
+                opacity: 1.5
+            }            // Adjust the opacity
+        )
+            .addTo(map)
+            .bindPopup("<b>มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตสุราษฎร์ธานี</b><br>คณะวิทยาศาสตร์และเทคโนโลยีอุตสาหกรรม")
+            .openPopup();
+    </script>
+</body>
+
+</html>
